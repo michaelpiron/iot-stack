@@ -2,3 +2,4 @@ chronograf/data/
 influxdb/data/
 kapacitor/data/
 grafana/data/
+portainer/data/

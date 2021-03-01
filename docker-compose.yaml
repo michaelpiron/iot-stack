@@ -2,6 +2,7 @@
 services:
   portainer:
     image: portainer/portainer
+    hostname: portainer
     ports:
       - 9000:9000
     volumes:
@@ -11,6 +12,7 @@ services:
 
   influxdb:
     image: influxdb:1.8.4
+    hostname: 'influxdb'
     ports:
       - 8086:8086
     volumes:
@@ -22,6 +24,7 @@ services:
 
   telegraf:
     image: telegraf:latest
+    hostname: 'telegraf'
     volumes:
       - ./telegraf:/etc/telegraf
       - /var/run/docker.sock:/var/run/docker.sock # Mount for Docker API access
@@ -33,6 +36,7 @@ services:
   kapacitor:
   # Full tag list: https://hub.docker.com/r/library/kapacitor/tags/
     image: kapacitor:1.5.8
+    hostname: 'kapacitor'
     volumes:
       - ./kapacitor/data/:/var/lib/kapacitor  # Mount for kapacitor data directory
       - ./kapacitor/config/:/etc/kapacitor/   # Mount for kapacitor configuration
@@ -47,6 +51,7 @@ services:
   chronograf:
     # Full tag list: https://hub.docker.com/r/library/chronograf/tags/
     image: chronograf:1.8.8
+    hostname: 'chronograf'
     environment:
       RESOURCES_PATH: "/usr/share/chronograf/resources"
     volumes:
@@ -62,6 +67,7 @@ services:
       
   grafana:
     image: grafana/grafana
+    hostname: 'grafana'
     user: "1000"
     ports:
       - 3000:3000
